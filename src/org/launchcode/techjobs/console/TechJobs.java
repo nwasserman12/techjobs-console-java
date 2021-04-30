@@ -124,6 +124,6 @@ public class TechJobs {
            }
 
        }
-        System.out.println("\n*****" + "\n*****");
+        System.out.println("\n*****" + someJobs "\n*****");
     }
 }
