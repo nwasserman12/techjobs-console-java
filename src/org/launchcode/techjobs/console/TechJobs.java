@@ -1,7 +1,9 @@
 package org.launchcode.techjobs.console;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -109,8 +111,19 @@ public class TechJobs {
     }
 
     // Print a list of jobs
+    // [{key: value}, {key: value2}]
+    // printJobs(JobData.findByColumnAndValue(searchField, searchTerm)); this is in the above method.
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+       for(HashMap<String, String> job : someJobs ){
+           for(Map.Entry<String, String> jobChoice: job.entrySet()) {
+               System.out.println("*****\n" + jobChoice + "\n*****");
+//jobChoice is individual key value pairs. somejobs is whole array with all the hash maps, job is hashmaps
+//               if (!JobData.findAll().contains(jobChoice)) {
+//                   System.out.println("No Match Found");
+//               }
+           }
 
-        System.out.println("printJobs is not implemented yet");
+       }
+        System.out.println("\n*****" + "\n*****");
     }
 }
