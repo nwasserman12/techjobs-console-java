@@ -66,7 +66,6 @@ public class JobData {
      * @return List of all jobs matching the criteria
      */
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
-
         // load data, if not already loaded
         loadData();
 
@@ -83,6 +82,10 @@ public class JobData {
 
         return jobs;
     }
+//    public static ArrayList<HashMap<String, String>> findByValue(String column, String value) {
+//        loadData();
+//
+//    }
 
     /**
      * Read in data from a CSV file and store it in a list

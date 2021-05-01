@@ -114,16 +114,18 @@ public class TechJobs {
     // [{key: value}, {key: value2}]
     // printJobs(JobData.findByColumnAndValue(searchField, searchTerm)); this is in the above method.
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+
        for(HashMap<String, String> job : someJobs ){
+           System.out.print("*****\n");
            for(Map.Entry<String, String> jobChoice: job.entrySet()) {
-               System.out.println("*****\n" + jobChoice + "\n*****");
-//jobChoice is individual key value pairs. somejobs is whole array with all the hash maps, job is hashmaps
-//               if (!JobData.findAll().contains(jobChoice)) {
-//                   System.out.println("No Match Found");
-//               }
+               if (!job.containsValue(jobChoice.getValue())) {
+                   System.out.println("No Match Found");
+               } else {
+                   System.out.println(jobChoice.getKey() + ":" + jobChoice.getValue());
+               }
+           }
+           System.out.print("*****\n");
            }
 
        }
-        System.out.println("\n*****" + someJobs "\n*****");
     }
-}
