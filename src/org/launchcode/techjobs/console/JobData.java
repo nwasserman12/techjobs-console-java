@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -82,10 +83,26 @@ public class JobData {
 
         return jobs;
     }
-//    public static ArrayList<HashMap<String, String>> findByValue(String column, String value) {
-//        loadData();
-//
-//    }
+    public static ArrayList<HashMap<String, String>> findByValue(String column, String value) {
+        loadData();
+
+        ArrayList<HashMap<String, String>> findJob = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs){
+
+            String aValue = row.get(column);
+
+            for(Map.Entry<String, String> entry : row.entrySet()){
+                if(aValue.contains(value)){
+                    findJob.add(row);
+                    System.out.println(entry);
+                }else{
+                    System.out.println("No entry");
+                }
+            }
+        }
+        return findJob;
+    }
 
     /**
      * Read in data from a CSV file and store it in a list
