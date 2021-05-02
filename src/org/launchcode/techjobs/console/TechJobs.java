@@ -1,9 +1,6 @@
 package org.launchcode.techjobs.console;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -57,18 +54,20 @@ public class TechJobs {
                 // How does the user want to search (e.g. by skill or employer)
                 String searchField = getUserSelection("Search by:", columnChoices);
 
+
                 // What is their search term?
                 System.out.println("\nSearch term: ");
                 String searchTerm = in.nextLine();
 
+
+                if(!JobData.findAll().contains(searchTerm)) {
+                    System.out.println("No Match Found");
+                }
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchField, searchTerm));
 //                    System.out.println("Search all fields not yet implemented.");
                 }else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
-                }
-                if(!JobData.findAll().contains(searchTerm)) {
-                    System.out.println("No Match Found");
                 }
             }
         }

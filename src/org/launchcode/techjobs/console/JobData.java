@@ -7,10 +7,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -39,7 +36,7 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
             String aValue = row.get(field);
 
-            if (!values.contains(aValue)) {
+            if (!values.contains(aValue.toLowerCase())) {
                 values.add(aValue);
             }
         }
@@ -73,7 +70,6 @@ public class JobData {
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-
             String aValue = row.get(column);
 
             if (aValue.contains(value)) {
@@ -86,22 +82,19 @@ public class JobData {
     public static ArrayList<HashMap<String, String>> findByValue(String column, String value) {
         loadData();
 
-        ArrayList<HashMap<String, String>> findJob = new ArrayList<>();
+        ArrayList<HashMap<String, String>> jobList = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs){
+            for(String key : row.keySet()){
 
-            String aValue = row.get(column);
+                String aValue = row.get(key);
 
-            for(Map.Entry<String, String> entry : row.entrySet()){
                 if(aValue.contains(value)){
-                    findJob.add(row);
-                    System.out.println(entry);
-                }else{
-                    System.out.println("No entry");
+                    jobList.add(row);
                 }
             }
-        }
-        return findJob;
+            }
+        return jobList;
     }
 
     /**
