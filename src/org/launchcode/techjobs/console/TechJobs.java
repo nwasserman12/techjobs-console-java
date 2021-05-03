@@ -58,7 +58,7 @@ public class TechJobs {
                 // What is their search term?
                 System.out.println("\nSearch term: ");
                 String searchTerm = in.nextLine();
-
+//                searchTerm.toLowerCase();
 
                 if(!JobData.findAll().contains(searchTerm)) {
                     System.out.println("No Match Found");
